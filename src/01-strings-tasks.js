@@ -20,7 +20,7 @@
  */
 function concatenateStrings(value1, value2) {
   return value1.concat(value2);
-//   throw new Error('Not implemented');
+  //   throw new Error('Not implemented');
 }
 
 
@@ -37,7 +37,7 @@ function concatenateStrings(value1, value2) {
  */
 function getStringLength(value) {
   return value.length;
-//   throw new Error('Not implemented');
+  //   throw new Error('Not implemented');
 }
 
 /**
@@ -55,7 +55,7 @@ function getStringLength(value) {
  */
 function getStringFromTemplate(firstName, lastName) {
   return `Hello, ${firstName} ${lastName}!`;
-//   throw new Error('Not implemented');
+  //   throw new Error('Not implemented');
 }
 
 /**
@@ -105,20 +105,20 @@ function removeLeadingAndTrailingWhitespaces(value) {
   let f1 = true;
   let f2 = true;
 
-  for (let i1 = 0, i2 = value.length - 1; i1 < i2; i1++, i2--) {
-    for (let j = 0; j < spaces.length; j++) {
-      if (value[i1] == spaces[j] && f1) {
-        countBegin++;
+  for (let i1 = 0, i2 = value.length - 1; i1 < i2; i1 += 1, i2 -= 1) {
+    for (let j = 0; j < spaces.length; j += 1) {
+      if (value[i1] === spaces[j] && f1) {
+        countBegin += 1;
         break;
       }
-      if (j == spaces.length - 1 && value[i1] != spaces[j]) f1 = false;
+      if (j === spaces.length - 1 && value[i1] !== spaces[j]) f1 = false;
     }
-    for (let j = 0; j < spaces.length; j++) {
-      if (value[i2] == spaces[j] && f2) {
-        countEnd++;
+    for (let j = 0; j < spaces.length; j += 1) {
+      if (value[i2] === spaces[j] && f2) {
+        countEnd += 1;
         break;
       }
-      if (j == spaces.length - 1 && value[i2] != spaces[j]) f2 = false;
+      if (j === spaces.length - 1 && value[i2] !== spaces[j]) f2 = false;
     }
   }
   return value.substring(countBegin, value.length - countEnd);
@@ -137,7 +137,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  */
 function repeatString(value, count) {
   let str = '';
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i += 1) {
     str = str.concat(value);
   }
   return str;
@@ -158,7 +158,6 @@ function repeatString(value, count) {
 function removeFirstOccurrences(str, value) {
   const index = str.indexOf(value);
   return str.substring(0, index).concat(str.substring(index + value.length, str.length));
-
 }
 
 /**
@@ -235,23 +234,24 @@ function extractEmails(str) {
  */
 function getRectangleString(width, height) {
   let str = '';
-  let str_top_bottom = '';
-  let str_space = '';
-  for (let i = 1; i < width - 1; i++) {
-    str_top_bottom = str_top_bottom.concat('─');
-    str_space = str_space.concat(' ');
+  let strTopBottom = '';
+  let strSpace = '';
+  for (let i = 1; i < width - 1; i += 1) {
+    strTopBottom = strTopBottom.concat('─');
+    strSpace = strSpace.concat(' ');
   }
 
-  for (let i = 0; i < height; i++) {
-    if (!i) {
-      str += (('┌'.concat(str_top_bottom)).concat('┐')).concat('\n');
-      continue;
+  for (let i = 0; i < height; i += 1) {
+    if (!i || i === height - 1) {
+      if (!i) {
+        str += (('┌'.concat(strTopBottom)).concat('┐')).concat('\n');
+      }
+      if (i === height - 1) {
+        str += (('└'.concat(strTopBottom)).concat('┘')).concat('\n');
+      }
+    } else {
+      str += (('│'.concat(strSpace)).concat('│')).concat('\n');
     }
-    if (i == height - 1) {
-      str += (('└'.concat(str_top_bottom)).concat('┘')).concat('\n');
-      continue;
-    }
-    str += (('│'.concat(str_space)).concat('│')).concat('\n');
   }
   return str;
 }
@@ -278,7 +278,7 @@ function encodeToRot13(str) {
     if (!_.match(/[A-Za-z]/)) return _;
     const c = Math.floor(_.charCodeAt(0) / 97);
     const k = (_.toLowerCase().charCodeAt(0) - 83) % 26 || 26;
-    return String.fromCharCode(k + ((c == 0) ? 64 : 96));
+    return String.fromCharCode(k + ((c === 0) ? 64 : 96));
   }).join('');
 }
 
@@ -296,8 +296,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return (typeof value === 'string' || {}.toString.call(value) == '[object String]');
-
+  return (typeof value === 'string' || {}.toString.call(value) === '[object String]');
 }
 
 
@@ -331,8 +330,8 @@ function getCardId(value) {
     'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
     'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
   ];
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i] == value) return i;
+  for (let i = 0; i < cards.length; i += 1) {
+    if (cards[i] === value) return i;
   }
   throw new Error('Not implemented');
 }

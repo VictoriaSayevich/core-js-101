@@ -21,7 +21,7 @@
  */
 function parseDataFromRfc2822(value) {
   return Date.parse(value);
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -37,7 +37,7 @@ function parseDataFromRfc2822(value) {
  */
 function parseDataFromIso8601(value) {
   return Date.parse(value);
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 
@@ -55,11 +55,7 @@ function parseDataFromIso8601(value) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(date) {
-  console.log(date);
-  // console.log(current.getYear());
-
-  // return current.getYear() % 4 == 0;
+function isLeapYear(/* date */) {
   throw new Error('Not implemented');
 }
 
